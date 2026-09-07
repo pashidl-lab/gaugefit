@@ -1,0 +1,6 @@
+# Keep everything LF in the repository so Linux and macOS builds are not
+# tripped up by CRLF that Windows checkouts introduce.
+* text=auto eol=lf
+*.pgm binary
+*.png binary
+*.pdf binary
