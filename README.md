@@ -145,14 +145,16 @@ pip install gaugefit
 ```
 
 Python 3.10 – 3.14 on Windows x86-64, Linux x86-64 / aarch64, macOS arm64.
-The only runtime dependency is **numpy**.
-
-PNG and PGM need nothing else. Other formats (JPEG, TIFF, …) go through Pillow if it is
-installed:
+The only runtime dependency is **numpy** — the engine, the finders, the recipe runtime,
+all of it. Two setup-time extras are optional:
 
 ```bash
-pip install "gaugefit[image]"
+pip install "gaugefit[image]"    # JPEG/TIFF/... via Pillow (PNG and PGM need nothing)
+pip install "gaugefit[calib]"    # calibration from a dot-grid target, Gage R&R F-test
 ```
+
+Without them `import gaugefit` still works and measuring still works; only those two
+features say what they need and stop.
 
 The wheel is tagged `py3-none-<platform>`: it does not link against the CPython ABI, so
 one file covers every supported Python and keeps working when a new one is released.

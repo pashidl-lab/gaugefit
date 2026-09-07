@@ -29,6 +29,16 @@ First release.
 - Runtime SIMD dispatch (AVX2+FMA / NEON / scalar) chosen by CPUID, so one wheel runs
   on old and new machines.
 
+### Dependencies
+- The engine is numpy-only, and there is a test that says so: `import gaugefit` and a
+  measurement both run in a subprocess with SciPy blocked. The B-spline prefilter solves
+  its symmetric banded Toeplitz system with a small Cholesky rather than
+  `scipy.linalg.solve_banded`, agreeing with LAPACK to 3e-16 relative.
+- SciPy is optional (`gaugefit[calib]`) and imported lazily by the two setup-time features
+  that need it: calibration from a dot-grid target, and the interaction F-test in Gage R&R.
+  Both say what they need instead of failing at import.
+- Pillow is optional (`gaugefit[image]`) for formats beyond PNG and PGM.
+
 ### Around it
 - Calibration applied to measured points, never by resampling the image;
   `undistort_image` exists only to say so.

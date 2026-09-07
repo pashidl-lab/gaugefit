@@ -26,7 +26,11 @@ On top of that single measurement there are the things a real inspection needs:
 - **An error budget** — the uncertainty that goes with the number, backed by measured bias
   curves rather than a rule of thumb.
 
-The only runtime dependency is numpy.
+The only runtime dependency is numpy — engine, finders, recipe runtime, all of it. Two
+setup-time features ask for more: calibrating from a dot-grid target and the interaction
+F-test in Gage R&R want SciPy (`pip install "gaugefit[calib]"`), and image formats beyond
+PNG/PGM want Pillow (`gaugefit[image]`). Neither is needed to import the package or to
+measure anything.
 
 ---
 
